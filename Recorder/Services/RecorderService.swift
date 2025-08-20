@@ -4,7 +4,7 @@ import AVFoundation
 
 extension RecorderView
 {
-    class RecorderService : NSObject, ObservableObject, AVAudioRecorderDelegate
+    class RecorderService : NSObject, AVAudioRecorderDelegate
     {
         private(set) var inputs : CurrentValueSubject<[AudioInput], Never> = .init([])
 
@@ -81,6 +81,11 @@ extension RecorderView
         private func createTemporaryURL() -> URL
         {
             let appFilesUrl = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!.appending(path: "Recordings")
+            
+            try? FileManager.default.createDirectory(at: appFilesUrl,
+                                                     withIntermediateDirectories: true,
+                                                     attributes: nil)
+            
             return appFilesUrl.appendingPathComponent(UUID().uuidString).appendingPathExtension("m4a")
         }
         
