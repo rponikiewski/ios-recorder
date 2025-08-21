@@ -30,12 +30,36 @@ struct FilesView : View
                             FileView(name: file.displayName)
                                 .padding(.vertical, 2)
                                 .padding(.horizontal, 10)
+                                .onTapGesture {
+                                    viewModel.updateFile(file: file)
+                                }
                         }
                     }
                 }
                 .frame(width: geometry.size.width,
-                       height: geometry.size.height - 200)
+                       height: geometry.size.height - 150)
 
+                HStack
+                {
+                    Slider(value: $viewModel.playheadValue,
+                           in: 0...1)
+                        .padding(10)
+                    
+                    Image(systemName: viewModel.isPlaying ? "pause.fill" : "play.fill")
+                        .resizable()
+                        .padding(15)
+                        .frame(width: 50, height: 50)
+                        .onTapGesture {
+                            if viewModel.isPlaying
+                            {
+                                viewModel.pause()
+                            }
+                            else
+                            {
+                                viewModel.play()
+                            }
+                        }
+                }
             }
         }
     }
