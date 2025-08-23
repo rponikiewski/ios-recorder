@@ -26,7 +26,7 @@ extension FilesView
             }
             
             timeObserver = player?.addPeriodicTimeObserver(forInterval: CMTime(value: 1, timescale: 20),
-                                            queue: DispatchQueue.main)
+                                                           queue: DispatchQueue.main)
             { [weak self] value in
                 
                 guard let self else { return }
@@ -48,7 +48,14 @@ extension FilesView
         func movePlayer(to time : Float64)
         {
             player?.seek(to : CMTimeMultiplyByFloat64(duration, multiplier: time))
-            self.currentTime.send(0)
+            self.currentTime.send(Float(time))
+        }
+        
+        deinit
+        {
+            if let observer = timeObserver {
+                player?.removeTimeObserver(observer)
+            }
         }
     }
 }

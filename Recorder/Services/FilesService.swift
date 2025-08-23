@@ -23,11 +23,27 @@ extension FilesView
                 {
                     let url = recordingsPath.appending(component: path)
                     
-                    self.files.value.append(AudioFile(url: url, displayName: url.lastPathComponent))
+                    self.files.value.append(AudioFile(url: url))
                 }
             }
 
             self.files.send(self.files.value)
+        }
+        
+        func updateFileName(name : String, file : AudioFile)
+        {
+            let newURL = file.url.deletingLastPathComponent().appendingPathComponent(name + ".\(file.url.pathExtension)")
+            do
+            {
+                try FileManager.default.moveItem(at: file.url, to: newURL)
+                file.updateFile(newUrl: newURL)
+                files.send(files.value)
+            }
+            catch
+            {
+                
+            }
+            
         }
     }
 }

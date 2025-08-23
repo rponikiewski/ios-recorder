@@ -1,21 +1,27 @@
 import UIKit
 
-class AudioFile : Equatable, Hashable
+class AudioFile : Equatable, Hashable, Identifiable
 {
     let id : UUID
-    let url : URL
-    let displayName : String
+    private(set) var url : URL
+    private(set) var displayName : String
     
-    init(url: URL, displayName: String)
+    init(url: URL)
     {
         self.id = UUID()
         self.url = url
-        self.displayName = displayName
+        self.displayName = String(url.lastPathComponent.split(separator: ".").first!)
     }
     
     static func == (lhs: AudioFile, rhs: AudioFile) -> Bool
     {
         return lhs.url == rhs.url
+    }
+    
+    func updateFile(newUrl : URL)
+    {
+        url = newUrl
+        displayName = String(url.lastPathComponent.split(separator: ".").first!)
     }
     
     func hash(into hasher: inout Hasher)

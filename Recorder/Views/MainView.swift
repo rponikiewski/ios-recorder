@@ -15,11 +15,8 @@ struct MainView : View
             {
                 FilesView()
             }
-            
-            
-
         }
-        .accentColor(.red)
+        .accentColor(.Rp.primary)
     }
 }
 

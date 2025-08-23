@@ -3,7 +3,9 @@ import SwiftUI
 struct FilesView : View
 {
     @StateObject var viewModel : ViewModel
-    
+    @State private var showSheet = false
+    @State private var selectedSheet : AudioFile?
+
     init()
     {
         self._viewModel = StateObject(wrappedValue: ViewModel())
@@ -33,6 +35,17 @@ struct FilesView : View
                                 .onTapGesture {
                                     viewModel.updateFile(file: file)
                                 }
+                                .onLongPressGesture {
+                                    selectedSheet = file
+                                    showSheet.toggle()
+                                }
+                        }
+                        .sheet(item: $selectedSheet) {
+                            FileNameSheet(text: $0.displayName)
+                            { name in
+                                viewModel.updateFileName(name: name,
+                                                         file: selectedSheet!)
+                            }
                         }
                     }
                 }
@@ -41,9 +54,13 @@ struct FilesView : View
 
                 HStack
                 {
-                    Slider(value: $viewModel.playheadValue,
-                           in: 0...1)
-                        .padding(10)
+                    PlayerProgress($viewModel.playheadValue,
+                                   isDragging: $viewModel.isDragging)
+                    { value in
+                        viewModel.movePlayhead(to: Float64(value))
+                    }
+                    .frame(height: 10)
+                    .padding(10)
                     
                     Image(systemName: viewModel.isPlaying ? "pause.fill" : "play.fill")
                         .resizable()

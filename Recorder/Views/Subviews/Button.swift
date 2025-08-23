@@ -15,12 +15,12 @@ struct CustomButton : View
     
     private var backgroundColor : Color
     {
-        style == .primary ? .red : .black
+        style == .primary ? .Rp.primary : .Rp.secondary
     }
     
     private var textColor : Color
     {
-        .white
+        style == .primary ? .Rp.primaryText : .Rp.secondaryText
     }
     
     init(text : String, style : Style = .primary, action : @escaping () -> Void)
@@ -52,3 +52,22 @@ struct CustomButton : View
     }
 }
 
+
+#Preview {
+    
+    VStack
+    {
+        CustomButton(text: "Primary", style: .primary)
+        {
+            
+        }
+        .frame(width: 200, height: 50)
+        
+        CustomButton(text: "Secondary", style: .secondary)
+        {
+            
+        }
+        .frame(width: 200, height: 50)
+    }
+    
+}

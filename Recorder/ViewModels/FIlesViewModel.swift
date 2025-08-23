@@ -8,6 +8,7 @@ extension FilesView
         @Published var files : [AudioFile] = []
         @Published var isPlaying : Bool = false
         @Published var playheadValue : Float = 0
+        @Published var isDragging : Bool = false
         
         private let filesService : FilesService = FilesService()
         private let playerService : PlayerService = PlayerService()
@@ -16,9 +17,25 @@ extension FilesView
         
         init()
         {
-            self.filesService.files.assign(to: &$files)
+            self.filesService.files
+                .assign(to: &$files)
             
-            self.playerService.currentTime.assign(to: &$playheadValue)
+            self.playerService.currentTime
+                .assign(to: &$playheadValue)
+            
+            self.$isDragging.sink { [weak self] isDragging in
+                guard let self, self.isPlaying else { return }
+                
+                if isDragging
+                {
+                    self.playerService.pause()
+                }
+                else
+                {
+                    self.playerService.play()
+                }
+            }
+            .store(in: &cancellables)
         }
         
         func updateFile(file : AudioFile)
@@ -26,6 +43,11 @@ extension FilesView
             playerService.updateFile(file: file.url)
             playerService.movePlayer(to: 0)
             isPlaying = false
+        }
+        
+        func updateFileName(name : String, file : AudioFile)
+        {
+            filesService.updateFileName(name: name, file: file)
         }
         
         func play()
@@ -38,6 +60,11 @@ extension FilesView
         {
             playerService.pause()
             isPlaying = false
+        }
+        
+        func movePlayhead(to : Float64)
+        {
+            playerService.movePlayer(to: to)
         }
     }
 }

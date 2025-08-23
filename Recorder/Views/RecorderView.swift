@@ -13,6 +13,28 @@ struct RecorderView : View
     {
         VStack(alignment: .leading)
         {
+            Text("Devices")
+                .font(.title)
+                .padding(10)
+                .bold()
+                .foregroundColor(.black)
+
+            ScrollView(.horizontal)
+            {
+                HStack(spacing: 0)
+                {
+                    ForEach(self.viewModel.inputs, id: \.self)
+                    { input in
+                        DeviceView(name: input.name,
+                                   isSelected: input == viewModel.selectedDevice)
+                        .frame(height: 50)
+                        .padding(5)
+                        .onTapGesture {
+                            self.viewModel.setInput(input: input)
+                        }
+                    }
+                }
+            }
             Spacer()
             VStack(alignment: .center)
             {
@@ -21,7 +43,7 @@ struct RecorderView : View
                 HStack
                 {
                     CustomButton(text: self.viewModel.recordingState != .idle ? "Stop" : "Start",
-                                 style: self.viewModel.recordingState != .idle ? .secondary : .primary)
+                                 style: .primary)
                     {
                         if self.viewModel.recordingState != .idle
                         {
@@ -38,7 +60,7 @@ struct RecorderView : View
 
                     if self.viewModel.recordingState != .idle
                     {
-                        CustomButton(text: self.viewModel.recordingState == .paused ? "Record" : "Pause")
+                        CustomButton(text: self.viewModel.recordingState == .paused ? "Record" : "Pause", style: .secondary)
                         {
                                 if self.viewModel.recordingState == .paused
                                 {
@@ -57,42 +79,6 @@ struct RecorderView : View
             }
             .frame(maxWidth: .infinity)
             Spacer()
-            Text("Devices")
-                .font(.title)
-                .padding(10)
-                .bold()
-                .foregroundColor(.black)
-
-            ScrollView(.horizontal)
-            {
-                HStack
-                {
-                    ForEach(self.viewModel.inputs, id: \.self)
-                    { input in
-                        ZStack(alignment: .topLeading)
-                        {
-                            RoundedRectangle(cornerRadius: 15)
-                                .stroke(.black, lineWidth: self.viewModel.selectedDevice == input ? 2 : 0)
-                                .fill(Color.init(red: 0.95,
-                                                 green: 0.95,
-                                                 blue: 0.95))
-                                .animation(.easeInOut, value: self.viewModel.selectedDevice)
-
-                            Text(input.name)
-                                .bold()
-                                .animation(.easeInOut, value: self.viewModel.selectedDevice)
-                                .padding(10)
-                                .font(.title3)
-                                .foregroundColor(.black)
-                        }
-                        .frame(width: 100, height: 100)
-                        .padding(10)
-                        .onTapGesture {
-                            self.viewModel.setInput(input: input)
-                        }
-                    }
-                }
-            }
         }
         .background(Color.white)
     }
