@@ -1,4 +1,5 @@
 import SwiftUI
+import SoundFramework
 
 struct RecorderView : View
 {

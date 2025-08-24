@@ -12,6 +12,9 @@
 		808250322E539C0900A71AFA /* DequeModule in Frameworks */ = {isa = PBXBuildFile; productRef = 808250312E539C0900A71AFA /* DequeModule */; };
 		808250342E539C0900A71AFA /* HashTreeCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 808250332E539C0900A71AFA /* HashTreeCollections */; };
 		808250362E539C0900A71AFA /* HeapModule in Frameworks */ = {isa = PBXBuildFile; productRef = 808250352E539C0900A71AFA /* HeapModule */; };
+		808250D82E5B312900A71AFA /* SoundFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 808250CE2E5B312900A71AFA /* SoundFramework.framework */; };
+		808250E32E5B312900A71AFA /* SoundFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 808250CE2E5B312900A71AFA /* SoundFramework.framework */; };
+		808250E52E5B312900A71AFA /* SoundFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 808250CE2E5B312900A71AFA /* SoundFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,12 +32,49 @@
 			remoteGlobalIDString = 80824FBE2E53962100A71AFA;
 			remoteInfo = Recorder;
 		};
+		808250D92E5B312900A71AFA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80824FB72E53962100A71AFA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 808250CD2E5B312900A71AFA;
+			remoteInfo = SoundFramework;
+		};
+		808250DB2E5B312900A71AFA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80824FB72E53962100A71AFA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 80824FBE2E53962100A71AFA;
+			remoteInfo = Recorder;
+		};
+		808250E12E5B312900A71AFA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80824FB72E53962100A71AFA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 808250CD2E5B312900A71AFA;
+			remoteInfo = SoundFramework;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		808250E42E5B312900A71AFA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				808250E52E5B312900A71AFA /* SoundFramework.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		80824FBF2E53962200A71AFA /* Recorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Recorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80824FCF2E53962300A71AFA /* RecorderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecorderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		80824FD92E53962300A71AFA /* RecorderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecorderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		808250CE2E5B312900A71AFA /* SoundFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SoundFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		808250D72E5B312900A71AFA /* SoundFrameworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SoundFrameworkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -44,6 +84,13 @@
 				Info.plist,
 			);
 			target = 80824FBE2E53962100A71AFA /* Recorder */;
+		};
+		808250E92E5B312900A71AFA /* Exceptions for "SoundFramework" folder in "SoundFramework" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			publicHeaders = (
+				SoundFramework.h,
+			);
+			target = 808250CD2E5B312900A71AFA /* SoundFramework */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -66,6 +113,19 @@
 			path = RecorderUITests;
 			sourceTree = "<group>";
 		};
+		808250CF2E5B312900A71AFA /* SoundFramework */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				808250E92E5B312900A71AFA /* Exceptions for "SoundFramework" folder in "SoundFramework" target */,
+			);
+			path = SoundFramework;
+			sourceTree = "<group>";
+		};
+		808250DD2E5B312900A71AFA /* SoundFrameworkTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = SoundFrameworkTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +134,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				808250302E539C0900A71AFA /* Collections in Frameworks */,
+				808250E32E5B312900A71AFA /* SoundFramework.framework in Frameworks */,
 				808250362E539C0900A71AFA /* HeapModule in Frameworks */,
 				8082502E2E539C0900A71AFA /* BitCollections in Frameworks */,
 				808250342E539C0900A71AFA /* HashTreeCollections in Frameworks */,
@@ -95,6 +156,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		808250CB2E5B312900A71AFA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		808250D42E5B312900A71AFA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				808250D82E5B312900A71AFA /* SoundFramework.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -104,6 +180,8 @@
 				80824FC12E53962200A71AFA /* Recorder */,
 				80824FD22E53962300A71AFA /* RecorderTests */,
 				80824FDC2E53962300A71AFA /* RecorderUITests */,
+				808250CF2E5B312900A71AFA /* SoundFramework */,
+				808250DD2E5B312900A71AFA /* SoundFrameworkTests */,
 				80824FC02E53962200A71AFA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -114,11 +192,23 @@
 				80824FBF2E53962200A71AFA /* Recorder.app */,
 				80824FCF2E53962300A71AFA /* RecorderTests.xctest */,
 				80824FD92E53962300A71AFA /* RecorderUITests.xctest */,
+				808250CE2E5B312900A71AFA /* SoundFramework.framework */,
+				808250D72E5B312900A71AFA /* SoundFrameworkTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		808250C92E5B312900A71AFA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		80824FBE2E53962100A71AFA /* Recorder */ = {
@@ -128,10 +218,12 @@
 				80824FBB2E53962100A71AFA /* Sources */,
 				80824FBC2E53962100A71AFA /* Frameworks */,
 				80824FBD2E53962100A71AFA /* Resources */,
+				808250E42E5B312900A71AFA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				808250E22E5B312900A71AFA /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				80824FC12E53962200A71AFA /* Recorder */,
@@ -194,6 +286,53 @@
 			productReference = 80824FD92E53962300A71AFA /* RecorderUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		808250CD2E5B312900A71AFA /* SoundFramework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 808250E62E5B312900A71AFA /* Build configuration list for PBXNativeTarget "SoundFramework" */;
+			buildPhases = (
+				808250C92E5B312900A71AFA /* Headers */,
+				808250CA2E5B312900A71AFA /* Sources */,
+				808250CB2E5B312900A71AFA /* Frameworks */,
+				808250CC2E5B312900A71AFA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				808250CF2E5B312900A71AFA /* SoundFramework */,
+			);
+			name = SoundFramework;
+			packageProductDependencies = (
+			);
+			productName = SoundFramework;
+			productReference = 808250CE2E5B312900A71AFA /* SoundFramework.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		808250D62E5B312900A71AFA /* SoundFrameworkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 808250EA2E5B312900A71AFA /* Build configuration list for PBXNativeTarget "SoundFrameworkTests" */;
+			buildPhases = (
+				808250D32E5B312900A71AFA /* Sources */,
+				808250D42E5B312900A71AFA /* Frameworks */,
+				808250D52E5B312900A71AFA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				808250DA2E5B312900A71AFA /* PBXTargetDependency */,
+				808250DC2E5B312900A71AFA /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				808250DD2E5B312900A71AFA /* SoundFrameworkTests */,
+			);
+			name = SoundFrameworkTests;
+			packageProductDependencies = (
+			);
+			productName = SoundFrameworkTests;
+			productReference = 808250D72E5B312900A71AFA /* SoundFrameworkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -212,6 +351,13 @@
 						TestTargetID = 80824FBE2E53962100A71AFA;
 					};
 					80824FD82E53962300A71AFA = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 80824FBE2E53962100A71AFA;
+					};
+					808250CD2E5B312900A71AFA = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					808250D62E5B312900A71AFA = {
 						CreatedOnToolsVersion = 16.2;
 						TestTargetID = 80824FBE2E53962100A71AFA;
 					};
@@ -237,6 +383,8 @@
 				80824FBE2E53962100A71AFA /* Recorder */,
 				80824FCE2E53962300A71AFA /* RecorderTests */,
 				80824FD82E53962300A71AFA /* RecorderUITests */,
+				808250CD2E5B312900A71AFA /* SoundFramework */,
+				808250D62E5B312900A71AFA /* SoundFrameworkTests */,
 			);
 		};
 /* End PBXProject section */
@@ -257,6 +405,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		80824FD72E53962300A71AFA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		808250CC2E5B312900A71AFA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		808250D52E5B312900A71AFA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -287,6 +449,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		808250CA2E5B312900A71AFA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		808250D32E5B312900A71AFA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -299,6 +475,21 @@
 			isa = PBXTargetDependency;
 			target = 80824FBE2E53962100A71AFA /* Recorder */;
 			targetProxy = 80824FDA2E53962300A71AFA /* PBXContainerItemProxy */;
+		};
+		808250DA2E5B312900A71AFA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 808250CD2E5B312900A71AFA /* SoundFramework */;
+			targetProxy = 808250D92E5B312900A71AFA /* PBXContainerItemProxy */;
+		};
+		808250DC2E5B312900A71AFA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 80824FBE2E53962100A71AFA /* Recorder */;
+			targetProxy = 808250DB2E5B312900A71AFA /* PBXContainerItemProxy */;
+		};
+		808250E22E5B312900A71AFA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 808250CD2E5B312900A71AFA /* SoundFramework */;
+			targetProxy = 808250E12E5B312900A71AFA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -550,6 +741,108 @@
 			};
 			name = Release;
 		};
+		808250E72E5B312900A71AFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 2CQGN78V2V;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rponikiewski.SoundFramework;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		808250E82E5B312900A71AFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 2CQGN78V2V;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rponikiewski.SoundFramework;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		808250EB2E5B312900A71AFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rponikiewski.SoundFrameworkTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Recorder.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Recorder";
+			};
+			name = Debug;
+		};
+		808250EC2E5B312900A71AFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rponikiewski.SoundFrameworkTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Recorder.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Recorder";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -585,6 +878,24 @@
 			buildConfigurations = (
 				80824FEA2E53962300A71AFA /* Debug */,
 				80824FEB2E53962300A71AFA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		808250E62E5B312900A71AFA /* Build configuration list for PBXNativeTarget "SoundFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				808250E72E5B312900A71AFA /* Debug */,
+				808250E82E5B312900A71AFA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		808250EA2E5B312900A71AFA /* Build configuration list for PBXNativeTarget "SoundFrameworkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				808250EB2E5B312900A71AFA /* Debug */,
+				808250EC2E5B312900A71AFA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

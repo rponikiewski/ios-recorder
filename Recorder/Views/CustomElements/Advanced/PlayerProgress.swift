@@ -64,7 +64,7 @@ struct PlayerProgress : View
         {
             PlayerProgress($progress,
                            isDragging: $isDragging,
-                           onChanged: { _ in })
+                           onChanged: { newProgress in progress = Float(newProgress) })
         }
     }
     return PreviewWrapper()

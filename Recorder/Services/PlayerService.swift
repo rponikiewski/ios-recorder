@@ -2,6 +2,7 @@ import UIKit
 import AVFoundation
 import Combine
 
+
 extension FilesView
 {
     class PlayerService
@@ -24,7 +25,7 @@ extension FilesView
             {
                 self.duration = duration
             }
-            
+
             timeObserver = player?.addPeriodicTimeObserver(forInterval: CMTime(value: 1, timescale: 20),
                                                            queue: DispatchQueue.main)
             { [weak self] value in

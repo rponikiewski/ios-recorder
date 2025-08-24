@@ -1,64 +1,86 @@
 import Combine
 import Collections
 import AVFoundation
+import SoundFramework
 
 extension RecorderView
 {
     class ViewModel : NSObject, ObservableObject
     {
         @Published var timerText : String = "00:00:00"
-        @Published var recordingState : RecoderState = .idle
+        @Published var recordingState : RecorderState = .idle
         @Published var inputs : [AudioInput] = []
         @Published var selectedDevice : AudioInput?
 
-        private var recorderService : RecorderService
-        private var timerService : TimerService
+        private var recorder : IOSRecorder
+        private var cancellables : Set<AnyCancellable> = []
         
         override init()
         {
-            self.recorderService = RecorderService()
-            self.timerService = TimerService()
+            self.recorder = IOSRecorder()
             
             super.init()
-
-            self.recorderService.inputs.assign(to: &$inputs)
-            self.timerService.timerText.assign(to: &$timerText)
             
-            self.selectedDevice = self.inputs.first
+            subscribe()
+        }
+        
+        private func subscribe()
+        {
+            recorder.state
+                .assign(to: &$recordingState)
+            
+            recorder.inputs
+                .sink { [weak self] newInputs in
+                    guard let self else { return }
+                    
+                    self.inputs = newInputs
+                    
+                    self.selectedDevice = self.inputs.first(where: {$0 == self.selectedDevice}) ?? self.inputs.first
+                }
+                .store(in: &cancellables)
+            
+            recorder.timer
+                .sink { [weak self] timeInterval in
+                    guard let self else { return }
+                    
+                    self.timerText = self.formatTime(timeInterval: timeInterval)
+                }
+                .store(in: &cancellables)
         }
         
         func startRecord()
         {
-            recorderService.startRecord()
-            timerService.startTimer()
-            recordingState = .recording
+            let _ = recorder.startRecording()
         }
  
         func pauseRecord()
         {
-            recorderService.pauseRecord()
-            timerService.pauseTimer()
-            recordingState = .paused
+            let _ = recorder.pauseRecording()
         }
       
         func unpauseRecord()
         {
-            recorderService.unpauseRecord()
-            timerService.resumeTimer()
-            recordingState = .recording
+            let _ = recorder.resumeRecording()
         }
         
         func stopRecord()
         {
-            recorderService.stopRecord()
-            timerService.resetTimer()
-            recordingState = .idle
+            let _ = recorder.stopRecording()
         }
         
         func setInput(input: AudioInput)
         {
-            recorderService.setPreferredInput(input: input)
-            selectedDevice = input
+            recorder.setPreferedInput(input)
+        }
+        
+        private func formatTime(timeInterval : TimeInterval) -> String
+        {
+            let totalMs = Int(timeInterval * 1000)
+            let minutes = totalMs / 60000
+            let seconds = (totalMs % 60000) / 1000
+            let centiseconds = (totalMs % 1000) / 10
+            
+            return String(format: "%02d:%02d:%02d", minutes, seconds, centiseconds)
         }
     }
 }

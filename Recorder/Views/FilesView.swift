@@ -17,7 +17,7 @@ struct FilesView : View
         { geometry in
             VStack(alignment: .leading)
             {
-                Text("Files")
+                Text("Recordings")
                     .foregroundColor(.black)
                     .font(.title)
                     .padding(10)
@@ -52,31 +52,70 @@ struct FilesView : View
                 .frame(width: geometry.size.width,
                        height: geometry.size.height - 150)
 
-                HStack
+                VStack(spacing: 0)
                 {
+                    HStack(spacing: 0)
+                    {
+                        Text(viewModel.files.first!.displayName)
+                            .padding(15)
+                        Spacer()
+                        
+                        Image(systemName: "chevron.left.chevron.left.dotted")
+                            .resizable()
+                            .padding(15)
+                            .frame(width: 45, height: 45)
+                            .onTapGesture {
+                                if viewModel.isPlaying
+                                {
+                                    viewModel.pause()
+                                }
+                                else
+                                {
+                                    viewModel.play()
+                                }
+                            }
+                        
+                        Image(systemName: viewModel.isPlaying ? "pause.fill" : "play.fill")
+                            .resizable()
+                            .padding(15)
+                            .frame(width: 50, height: 50)
+                            .onTapGesture {
+                                if viewModel.isPlaying
+                                {
+                                    viewModel.pause()
+                                }
+                                else
+                                {
+                                    viewModel.play()
+                                }
+                            }
+                        Image(systemName: "chevron.right.dotted.chevron.right")
+                            .resizable()
+                            .padding(15)
+                            .frame(width: 45, height: 45)
+                            .onTapGesture {
+                                if viewModel.isPlaying
+                                {
+                                    viewModel.pause()
+                                }
+                                else
+                                {
+                                    viewModel.play()
+                                }
+                            }
+                    }
+                    
                     PlayerProgress($viewModel.playheadValue,
                                    isDragging: $viewModel.isDragging)
                     { value in
                         viewModel.movePlayhead(to: Float64(value))
                     }
                     .frame(height: 10)
-                    .padding(10)
                     
-                    Image(systemName: viewModel.isPlaying ? "pause.fill" : "play.fill")
-                        .resizable()
-                        .padding(15)
-                        .frame(width: 50, height: 50)
-                        .onTapGesture {
-                            if viewModel.isPlaying
-                            {
-                                viewModel.pause()
-                            }
-                            else
-                            {
-                                viewModel.play()
-                            }
-                        }
                 }
+                .background(.gray.opacity(0.1))
+                .cornerRadius(10)
+                .padding(10)
             }
         }
     }

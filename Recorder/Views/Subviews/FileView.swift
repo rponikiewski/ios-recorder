@@ -6,16 +6,25 @@ struct FileView : View
     
     var body: some View
     {
-        VStack
+        HStack
         {
+            Image(systemName: "music.quarternote.3")
+                .frame(width: 40, height: 40)
+                .background(Color.Rp.secondary)
+                .cornerRadius(6)
+                .padding(10)
+                .accentColor(.Rp.secondaryText)
+                
             Text(name)
-                .lineLimit(nil)
-                .font(.title2)
+                .lineLimit(1)
+                .truncationMode(.middle)
+                .font(.title3)
                 .bold()
-                .padding(14)
+                .padding(.vertical, 15)
+                .padding(.trailing, 10)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(.gray.opacity(0.2))
+        .background(.gray.opacity(0.1))
         .cornerRadius(12)
     }
 }
@@ -24,8 +33,7 @@ struct FileView : View
 {
     VStack(spacing: 0)
     {
-        FileView(name: "File name jdjjf ffjjfjfjfjfjf fjfjjfjfjjf fjfjjfjffjjfjfjfjjf")
-            .fixedSize(horizontal: false, vertical: true)
+        FileView(name: "Name of file")
             .padding(10)
     }
 }
