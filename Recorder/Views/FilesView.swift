@@ -118,6 +118,7 @@ struct FilesView : View
                 .padding(10)
             }
         }
+        .background(Color.white)
     }
 }
 
